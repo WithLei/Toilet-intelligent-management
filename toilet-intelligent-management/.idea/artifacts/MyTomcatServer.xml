@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="MyTomcatServer">
+    <output-path>$PROJECT_DIR$/out/artifacts/MyTomcatServer</output-path>
+    <root id="root" />
+  </artifact>
+</component>

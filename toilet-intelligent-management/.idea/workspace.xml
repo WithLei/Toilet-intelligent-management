@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Toilet" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5c29bbb6-2753-445c-bb29-6a9b77201c92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MyTomcatServer.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/cn/javaee/bean/CleanLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/cn/javaee/bean/CleanLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/cn/javaee/utils/ResponseUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/cn/javaee/utils/ResponseUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toilet-intelligent-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/toilet-intelligent-management.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +24,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/javaee/servlet/TestServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="124">
+              <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/test.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -32,13 +46,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand />
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="35" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -50,8 +71,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -84,21 +103,28 @@
               <item name="javaee" type="462c0819:PsiDirectoryNode" />
               <item name="servlet" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="toilet-intelligent-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="toilet-intelligent-management" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544021320187" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/cn/javaee/servlet" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544188366437" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebContent/WEB-INF/lib" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -113,19 +139,20 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 7.0.88" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.88" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 7.0.88" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.88" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/toilet_base" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <file path="$PROJECT_DIR$">
+        <file path="%IDEA_RUN:TOMCAT_HOME%/webapps/ROOT">
           <settings>
-            <option name="CONTEXT_PATH" value="/toilet_intelligent_management" />
+            <option name="CONTEXT_PATH" value="/ROOT" />
           </settings>
         </file>
-        <file path="$PROJECT_DIR$/src/cn/javaee/servlet">
+        <artifact name="Toilet">
           <settings>
-            <option name="CONTEXT_PATH" value="/servlet" />
+            <option name="CONTEXT_PATH" value="/Toilet" />
           </settings>
-        </file>
+        </artifact>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_7_0_88_toilet-intelligent-management" />
@@ -185,7 +212,9 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="false" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Toilet" />
+        </option>
       </method>
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.88" ALTERNATIVE_JRE_ENABLED="false">
@@ -265,31 +294,34 @@
       <updated>1543997497230</updated>
       <workItem from="1543997564411" duration="4412000" />
       <workItem from="1544073991523" duration="594000" />
+      <workItem from="1544183402332" duration="5229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5006000" />
+    <option name="totallyTimeSpent" value="10235000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1472" height="878" extended-state="7" />
+    <frame x="-7" y="-7" width="1472" height="878" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24045262" />
+      <window_info id="Web" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23125884" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3297587" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3297587" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.21983914" />
@@ -310,10 +342,20 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/javaee/servlet/TestServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        <state relative-caret-position="124">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -323,7 +365,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>MyTomcatServer</last-edited>
+          <last-edited>Toilet</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -336,7 +378,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

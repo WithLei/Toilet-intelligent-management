@@ -29,7 +29,7 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("text", "Hello World!看到这条说明测试成功");
-		RequestDispatcher rd = request.getRequestDispatcher("/test.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 	}
 

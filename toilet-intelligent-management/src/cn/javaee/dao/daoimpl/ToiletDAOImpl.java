@@ -2,13 +2,13 @@ package cn.javaee.dao.daoimpl;
 
 import java.util.List;
 
-import cn.javaee.bean.Cleaner;
-import cn.javaee.dao.dao.CleanerDAO;
+import cn.javaee.bean.Toilet;
+import cn.javaee.dao.dao.ToiletDAO;
 
-public class CleanerDAOImpl extends BaseDAOImpl implements CleanerDAO{
-	
+public class ToiletDAOImpl extends BaseDAOImpl implements ToiletDAO{
+
 	@Override
-	public boolean save(Cleaner entity) {
+	public boolean save(Toilet entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -20,25 +20,26 @@ public class CleanerDAOImpl extends BaseDAOImpl implements CleanerDAO{
 	}
 
 	@Override
-	public boolean update(Cleaner entity) {
+	public boolean update(Toilet entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+
 	@Override
-	public Cleaner getById(int id) {
+	public Toilet getById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Cleaner> getById(int[] ids) {
+	public List<Toilet> getById(int[] ids) {
 		// 不做
 		return null;
 	}
 
 	@Override
-	public List<Cleaner> getAll() {
+	public List<Toilet> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

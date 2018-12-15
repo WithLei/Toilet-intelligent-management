@@ -2,7 +2,7 @@ package cn.javaee.bean;
 
 // 保洁人员
 public class Cleaner {
-	private long id;
+	private int id;
 	/**
 	 * 姓名
 	 */
@@ -20,7 +20,7 @@ public class Cleaner {
 		super();
 	}
 
-	public Cleaner(long id, String name, String phone, String company) {
+	public Cleaner(int id, String name, String phone, String company) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,11 +28,11 @@ public class Cleaner {
 		this.company = company;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

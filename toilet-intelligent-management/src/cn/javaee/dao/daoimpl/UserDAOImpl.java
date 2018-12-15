@@ -5,45 +5,45 @@ import java.util.List;
 import cn.javaee.bean.User;
 import cn.javaee.dao.dao.UserDAO;
 
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl extends BaseDAOImpl implements UserDAO{
 
 	@Override
-	public User login(String username, String password) {
+	public boolean login(String username, String password) {
+		return false;
+	}
+
+	@Override
+	public boolean register(User user) {
+		return false;
+	}
+
+	@Override
+	public boolean save(User entity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(User entity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public User getById(int id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void register(User user) {
-		
-	}
-
-	@Override
-	public void save(User entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(User entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public User getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> getById(long[] ids) {
-		// TODO Auto-generated method stub
+	public List<User> getById(int[] ids) {
+		// 不做
 		return null;
 	}
 

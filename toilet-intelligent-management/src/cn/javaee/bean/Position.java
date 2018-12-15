@@ -9,7 +9,7 @@ public class Position {
 	/**
 	 * 编号 primary key 也用于显示
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 是否使用中
 	 */
@@ -35,7 +35,7 @@ public class Position {
 		super();
 	}
 
-	public Position(long id, boolean isUsing, boolean isServing, Date start_time, String type) {
+	public Position(int id, boolean isUsing, boolean isServing, Date start_time, String type) {
 		super();
 		this.id = id;
 		this.isUsing = isUsing;
@@ -44,11 +44,11 @@ public class Position {
 		this.type = type;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

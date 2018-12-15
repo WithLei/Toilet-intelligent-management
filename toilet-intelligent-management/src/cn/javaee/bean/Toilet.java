@@ -9,7 +9,7 @@ public class Toilet {
 	/**
 	 * 编号 primary key
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 厕所名 eg:茶水间厕所
 	 */
@@ -51,7 +51,7 @@ public class Toilet {
 		super();
 	}
 	
-	public Toilet(long id, String name, int type, Cleaner cleaner, Date last_cleaned_time, Date next_clean_time,
+	public Toilet(int id, String name, int type, Cleaner cleaner, Date last_cleaned_time, Date next_clean_time,
 			List<Position> positionList, boolean isService) {
 		super();
 		this.id = id;
@@ -64,11 +64,11 @@ public class Toilet {
 		this.isService = isService;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -4,7 +4,7 @@ import cn.javaee.utils.TimeUtils;
 
 // 用户
 public class User {
-	private long id;
+	private int id;
 	/**
 	 * 姓名
 	 */
@@ -27,7 +27,7 @@ public class User {
 	}
 
 	// 此构造器无avatar属性
-	public User(long id, String name, String phone, String pwd) {
+	public User(int id, String name, String phone, String pwd) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,11 +35,11 @@ public class User {
 		this.pwd = pwd;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

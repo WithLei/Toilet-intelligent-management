@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Context reloadable = "true">
+    <Resource
+        name="jdbc/javaee"
+        type="javax.sql.DataSource"
+        maxActive="30"
+        maxIdle="2"
+        username="root"
+        driverClassName="com.mysql.jdbc.Driver"
+        password=""
+        url="jdbc:mysql://localhost:3306/toilet?characterEncoding=utf-8"/>
+</Context>

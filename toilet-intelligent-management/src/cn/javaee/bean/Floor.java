@@ -7,7 +7,7 @@ public class Floor {
 	/**
 	 * 楼层编号 primary key
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 楼层名 eg:2B楼3层
 	 */
@@ -21,18 +21,18 @@ public class Floor {
 		super();
 	}
 
-	public Floor(long id, String name, List<Toilet> toiletList) {
+	public Floor(int id, String name, List<Toilet> toiletList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.toiletList = toiletList;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

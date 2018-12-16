@@ -34,6 +34,13 @@ public class User {
 		this.phone = phone;
 		this.pwd = pwd;
 	}
+	
+	public User(String name, String phone, String pwd,String avatar) {
+		this.name = name;
+		this.phone = phone;
+		this.pwd = pwd;
+		this.avatar=avatar;
+	}
 
 	public int getId() {
 		return id;

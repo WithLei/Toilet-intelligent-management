@@ -1,6 +1,6 @@
 package cn.javaee.bean;
 
-import java.util.Date;
+import java.sql.*;
 
 import cn.javaee.utils.TimeUtils;
 
@@ -31,17 +31,35 @@ public class Position {
 	 */
 	private String type;
 	
+	/**
+	 * 对应的厕所 
+	 **/
+	private Toilet toilet;
+	
+	
+	
+	
+	public Toilet getToilet() {
+		return toilet;
+	}
+
+	public void setToilet(Toilet toilet) {
+		this.toilet = toilet;
+	}
+
 	public Position() {
 		super();
 	}
 
-	public Position(int id, boolean isUsing, boolean isServing, Date start_time, String type) {
+	
+	public Position(int id, boolean isUsing, boolean isServing, Date start_time, String type, Toilet toilet) {
 		super();
 		this.id = id;
 		this.isUsing = isUsing;
 		this.isServing = isServing;
 		this.start_time = start_time;
 		this.type = type;
+		this.toilet = toilet;
 	}
 
 	public int getId() {
@@ -83,14 +101,12 @@ public class Position {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Position[ id = " + this.id +
-                ",isUsing = " + this.isUsing +
-                ",isServing = " + this.isServing +
-                ",start_time = " + TimeUtils.dateToString(this.start_time) +
-                ",type = " + this.type +
-                " ]";
+		return "Position [id=" + id + ", isUsing=" + isUsing + ", isServing=" + isServing + ", start_time=" + start_time
+				+ ", type=" + type + ", toilet=" + toilet + "]";
 	}
+	
+	
 }

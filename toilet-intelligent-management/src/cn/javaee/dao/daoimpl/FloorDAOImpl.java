@@ -11,11 +11,11 @@ public class FloorDAOImpl extends BaseDAOImpl implements FloorDAO {
 
 	@Override
 	public boolean save(Floor entity) {
-		String sql = "insert into floor(id, name) value(?,?)";
+		String sql = "insert into floor(name) values(?)";
 		try (Connection connection = ds.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)) {
-			ps.setInt(1, entity.getId());
-			ps.setString(2, entity.getName());
+			ps.setString(1, entity.getName());
+			ps.executeUpdate();
 			return true;
 		} catch(SQLException e) {
 			e.printStackTrace();

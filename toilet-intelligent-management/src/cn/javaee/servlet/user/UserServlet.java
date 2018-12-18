@@ -19,19 +19,22 @@ import cn.javaee.servlet.BaseHttpServlet;
 
 @WebServlet({"/login","/register","/getUser","/getAllUser"})
 public class UserServlet extends BaseHttpServlet{
-
 	@Override
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();
-		
 		if(uri.endsWith("login")) {
+			request.setCharacterEncoding("utf-8");
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			UserDAO userDAO = new UserDAOImpl();
 			User user = new User();
 			user.setName(username);
 			user.setPwd(password);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			HttpSession session = request.getSession();
+			session.setAttribute("user",user);
 			boolean isLogin = userDAO.login(username, password);
 			if(isLogin) {
 				Gson gson = new Gson();
@@ -46,10 +49,7 @@ public class UserServlet extends BaseHttpServlet{
 				out.print(json);
 				out.flush();
 			}
-			response.setCharacterEncoding("UTF=8");
-			response.setContentType("text/html;charset=UTF-8");
-			HttpSession session = request.getSession();
-			session.setAttribute("user",user);
+			
 		}
 		if (uri.endsWith("getAllUser")) {
 			UserDAOImpl userDAOImpl = new UserDAOImpl();

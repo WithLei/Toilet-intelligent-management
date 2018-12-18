@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -28,6 +29,9 @@ public class UserServlet extends BaseHttpServlet{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			UserDAO userDAO = new UserDAOImpl();
+			User user = new User();
+			user.setName(username);
+			user.setPwd(password);
 			boolean isLogin = userDAO.login(username, password);
 			if(isLogin) {
 				Gson gson = new Gson();
@@ -42,7 +46,10 @@ public class UserServlet extends BaseHttpServlet{
 				out.print(json);
 				out.flush();
 			}
-			
+			response.setCharacterEncoding("UTF=8");
+			response.setContentType("text/html;charset=UTF-8");
+			HttpSession session = request.getSession();
+			session.setAttribute("user",user);
 		}
 		if (uri.endsWith("getAllUser")) {
 			UserDAOImpl userDAOImpl = new UserDAOImpl();

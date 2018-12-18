@@ -25,6 +25,7 @@ public class common extends BaseHttpServlet {
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
+		
 		if (uri.endsWith("getAllFloor")) {
 			FloorDAOImpl floorDAOImpl = new FloorDAOImpl();
 			List<Floor>floors = floorDAOImpl.getAll();

@@ -1,9 +1,7 @@
-package cn.javaee.servlet.position;
+package cn.javaee.servlet.cleaner;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,31 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import cn.javaee.bean.Cleaner;
 import cn.javaee.bean.Floor;
-import cn.javaee.bean.Position;
-import cn.javaee.bean.Toilet;
+import cn.javaee.dao.daoimpl.CleanerDAOImpl;
 import cn.javaee.dao.daoimpl.FloorDAOImpl;
-import cn.javaee.dao.daoimpl.PositionDAOImpl;
-import cn.javaee.enums.PositionTypeEnum;
 import cn.javaee.servlet.BaseHttpServlet;
 
-/**
- * Servlet implementation class common
- */
-@WebServlet("/save")
+@WebServlet({"/getAllCleaner","/getCleaner","/setCleaner"})
 public class common extends BaseHttpServlet {
+	@Override
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
 		String uri = request.getRequestURI();
-		if (uri.endsWith("save")) {
-			Toilet toilet = new Toilet();
-			toilet.setId(3);
-			
-			Position position = new Position(100,true,false,new java.sql.Date(System.currentTimeMillis()),
-					PositionTypeEnum.POSITION_SQUAT.getName(),toilet);
-			PositionDAOImpl positionDAOImpl = new PositionDAOImpl();
-			positionDAOImpl.save(position);
+		
+		if (uri.endsWith("getAllCleaner")) {
+			CleanerDAOImpl cleanerDAOImpl = new CleanerDAOImpl();
+			List<Cleaner>cleaners = cleanerDAOImpl.getAll();
+			Gson gson = new Gson();
+			String json = gson.toJson(cleaners);
+
+			PrintWriter out = new PrintWriter(response.getOutputStream());
+			out.print(json);
+			out.flush();
 		}
 	}
 }

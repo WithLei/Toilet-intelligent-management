@@ -1,0 +1,55 @@
+﻿.logo {
+	color: #fff;
+	float: left;
+	line-height: 60px;
+	font-size: 20px;
+	padding: 0 25px;
+	text-align: left;
+	width: 300px;
+}
+
+.top_menu {
+	position: absolute;
+	right: 0;
+	background: none;
+}
+
+.footer {
+	text-align: center;
+	line-height: 44px;
+	color: #8d8d8d;
+}
+
+.layui-tab {
+	margin: 0px 0;
+}
+
+#tabTitle {
+	background-color: #F2F2F2;
+}
+
+.dx-welcome {
+	background-image: url(../images/welcome.png);
+	width: 677px;
+	height: 259px;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	margin-top: -71px;
+	margin-left: -339px;
+}
+
+.dx-welcome-title {
+	position: absolute;
+	top : calc(35% + 230px);
+	left: 50%;
+	margin-top: -5px;
+	margin-left: -220px;
+	font-size: 20px;
+}
+
+.title_breadcrumb{
+	text-align: left;
+	line-height: 44px;
+	color: #8d8d8d;
+}

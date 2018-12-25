@@ -35,6 +35,7 @@ public class UserServlet extends BaseHttpServlet{
 			response.setContentType("text/html;charset=UTF-8");
 			HttpSession session = request.getSession();
 			session.setAttribute("user",user);
+			System.out.println(user);
 			boolean isLogin = userDAO.login(username, password);
 			if(isLogin) {
 				Gson gson = new Gson();

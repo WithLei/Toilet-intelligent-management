@@ -47,21 +47,10 @@ public class Toilet {
 	 */
 	private boolean isService;
 	
+	private Floor floor;
+	
 	public Toilet() {
 		super();
-	}
-	
-	public Toilet(int id, String name, int type, Cleaner cleaner, Date last_cleaned_time, Date next_clean_time,
-			List<Position> positionList, boolean isService) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.cleaner = cleaner;
-		this.last_cleaned_time = last_cleaned_time;
-		this.next_clean_time = next_clean_time;
-		this.positionList = positionList;
-		this.isService = isService;
 	}
 
 	public int getId() {
@@ -128,16 +117,20 @@ public class Toilet {
 		this.isService = isService;
 	}
 
+	public Floor getFloor() {
+		return floor;
+	}
+
+	public void setFloor(Floor floor) {
+		this.floor = floor;
+	}
+
 	@Override
 	public String toString() {
-		return "Toilet[ id = " + this.id +
-                ",name = " + this.name +
-                ",type = " + this.type +
-                ",cleaner = " + this.cleaner.toString() +
-                ",last_cleaned_time = " + TimeUtils.dateToString(this.last_cleaned_time) +
-                ",next_clean_time = " + TimeUtils.dateToString(this.next_clean_time) +
-                ",isService = " + this.isService +
-//                ",positionList = " + this.positionList.toString() +
-                " ]";
+		return "Toilet [id=" + id + ", name=" + name + ", type=" + type + ", cleaner=" + cleaner
+				+ ", last_cleaned_time=" + last_cleaned_time + ", next_clean_time=" + next_clean_time
+				+ ", positionList=" + positionList + ", isService=" + isService + ", floor=" + floor + "]";
 	}
+	
+	
 }

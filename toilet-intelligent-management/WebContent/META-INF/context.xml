@@ -7,6 +7,6 @@
         maxIdle="2"
         username="root"
         driverClassName="com.mysql.jdbc.Driver"
-        password=""
+        password="qqq1201"
         url="jdbc:mysql://localhost:3306/toilet?characterEncoding=utf-8"/>
 </Context>

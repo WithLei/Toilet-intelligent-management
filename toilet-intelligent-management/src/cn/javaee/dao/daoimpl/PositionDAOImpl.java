@@ -18,8 +18,6 @@ public class PositionDAOImpl extends BaseDAOImpl implements PositionDAO{
 
 	public boolean save(Position entity) {
 		String sql = "insert into position (isUsing, isServing,start_time,type,toiletid) values(?,?,?,?,?)";
-		System.out.println(entity.getStart_time());
-		System.out.println(entity.getType());
 		try (Connection connection = ds.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setBoolean(1, entity.isUsing()); 
@@ -88,9 +86,8 @@ public class PositionDAOImpl extends BaseDAOImpl implements PositionDAO{
 			/**
 			 * 后期改，Toilet对象不完整
 			 */
-			Toilet toilet = new Toilet();
-			toilet.setId(rs.getInt("toiletid"));
-			position.setToilet(toilet);
+			ToiletDAOImpl toilet = new ToiletDAOImpl();
+			position.setToilet(toilet.getById(rs.getInt("toiletid")));
 			return position;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -137,6 +134,24 @@ public class PositionDAOImpl extends BaseDAOImpl implements PositionDAO{
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<Position> getByToiletId(Integer id) {
+		String sql = "select * from position where toiletid = ?";
+		try (Connection connection = ds.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql)) {
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			List<Position> positions = new ArrayList<>();
+			while(rs.next()) {
+	               positions.add(getPositionBySql(rs));
+	            }
+			return positions;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

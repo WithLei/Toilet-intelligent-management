@@ -5,9 +5,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.javaee.bean.Floor;
+import cn.javaee.bean.User;
 import cn.javaee.dao.dao.FloorDAO;
 
 public class FloorDAOImpl extends BaseDAOImpl implements FloorDAO {
+
+	
+	@Override
+	public List<Floor> getByManyCondition(String name) {
+		String sql = "select * from floor where 1=1 ";
+		List<String> parameter = new ArrayList<>();
+		if(name!=null && !name.trim().isEmpty()) {
+			sql += "and name=? ";
+			parameter.add(name);
+		}
+		try (Connection connection =  ds.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql)) {
+				Integer index=1;
+				for(String p:parameter) {
+					ps.setString(index++, p);
+				}
+				List<Floor> result = new ArrayList<>();
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					result.add(getFloorInSql(rs));
+				}
+				rs.close();
+				ps.close();
+				return result;
+			} catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
 
 	@Override
 	public boolean save(Floor entity) {

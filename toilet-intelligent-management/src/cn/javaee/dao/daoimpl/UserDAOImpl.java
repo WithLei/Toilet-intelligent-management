@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.sun.javafx.binding.StringFormatter;
+import com.sun.org.apache.xpath.internal.operations.And;
+
 import java.util.ArrayList;
 
 import java.sql.Connection;
@@ -77,8 +81,11 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO{
 	@Override
 	public boolean update(User entity) {
 		// TODO Auto-generated method stub
-		String sql = "update user set name=\"" + entity.getName() + "\"" +
-				" where id=\"" + entity.getId() + "\"";
+		String sql = "update user set name=\"" +entity.getName() +"\","
+				+ "phone=\"" + entity.getPhone() + "\","
+						+ "password=\"" + entity.getPwd() + "\" where "
+								+ "id=" +entity.getId();
+		System.out.println(sql);
 		return execsql(sql);
 	}
 
@@ -101,6 +108,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO{
     	User user = new User();
     	user.setId(rs.getInt(1));
     	user.setName(rs.getString(2));
+    	user.setPhone(rs.getString(3));
         return user;
     }
 	@Override
@@ -129,4 +137,37 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO{
         }
     }
 
+	@Override
+	public List<User> getByManyCondition(String name, String phone) {
+		String sql = "select * from user where 1=1 ";
+		List<String> parameter = new ArrayList<>();
+		if(name!=null && !name.trim().isEmpty()) {
+			sql += "and name=? ";
+			parameter.add(name);
+		}
+		if(phone!=null && !phone.trim().isEmpty()) {
+			sql += "and phone=? ";
+			parameter.add(phone);
+		}
+		try (Connection connection =  ds.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql)) {
+				Integer index=1;
+				for(String p:parameter) {
+					ps.setString(index++, p);
+				}
+				List<User> result = new ArrayList<>();
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					result.add(getUserInSql(rs));
+				}
+				rs.close();
+				ps.close();
+				return result;
+			} catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+
+	
 }

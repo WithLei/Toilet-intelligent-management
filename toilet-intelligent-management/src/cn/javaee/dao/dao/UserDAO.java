@@ -1,5 +1,7 @@
 package cn.javaee.dao.dao;
 
+import java.util.List;
+
 import cn.javaee.bean.User;
 
 public interface UserDAO extends BaseDAO<User>{
@@ -8,4 +10,6 @@ public interface UserDAO extends BaseDAO<User>{
 
     //注册用户
     public boolean register(User user);
+    
+    public List<User> getByManyCondition(String name,String phone);
 }

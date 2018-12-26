@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>智能厕位管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/xadmin.js"></script>
+   
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form">
+        <input id="id" type="hidden" >
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                 	用户名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" 
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                 	电话号码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="phone" name="phone" 
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                 	公司
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="company" name=""company"" 
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <button  class="layui-btn" type="button" onclick="update()">
+                 	 修改
+              </button>
+          </div>
+      </form>
+    </div>
+ <script>
+ 
+ function getQueryString(name) { 
+     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+     var r = window.location.search.substr(1).match(reg); 
+     if (r != null) return unescape(r[2]); 
+     return null; 
+ } 
+ 
+	$.ajax({
+        url: '/toilet-intelligent-management/getCleanerById',
+        type: 'post',
+        data: {
+            'id': getQueryString("id")
+        },
+        success: function (info) {
+     	   var data = JSON.parse(info);
+     	   
+     	   var id = document.getElementById("id");
+     	   id.value = data.data[0].id;
+          
+           var name = document.getElementById("name");
+           name.value = data.data[0].name;
+           
+           var phone = document.getElementById("phone");
+           phone.value = data.data[0].phone;
+           
+           var company = document.getElementById("company");
+           company.value = data.data[0].company;
+          
+        }
+    });
+	
+	function update(){
+		var id = document.getElementById("id");   
+        var name = document.getElementById("name");    
+        var phone = document.getElementById("phone");   
+        var company = document.getElementById("company");
+        
+        $.ajax({
+            url: '/toilet-intelligent-management/updateCleaner',
+            type: 'post',
+            data: {
+                'id':id.value,
+                'name':name.value,
+                'phone':phone.value,
+                'company':company.value
+            },
+            success: function (info) {
+            	 var data = JSON.parse(info);
+                 if (data.code == 1) {
+              	   layer.msg("发生错误");
+                 } else {
+                     layer.msg(data.msg);
+                 }
+            }
+        });
+	}
+ </script>
+  </body>
+
+</html>

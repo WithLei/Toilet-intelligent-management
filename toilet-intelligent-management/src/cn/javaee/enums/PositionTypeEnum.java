@@ -23,4 +23,12 @@ public enum PositionTypeEnum {
 		this.name = name;
 	}
 	
+	public static String getTypeByCode(Integer code) {
+		for(PositionTypeEnum enum1:PositionTypeEnum.values()) {
+			if(enum1.type.equals(code)) {
+				return enum1.name;
+			}
+		}
+		return null;
+	}
 }

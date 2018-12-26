@@ -33,8 +33,18 @@ public class CleanerDAOImpl extends BaseDAOImpl implements CleanerDAO{
 
 	@Override
 	public Cleaner getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from cleaner where id=" + id;
+		try (Connection conn = ds.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(sql);
+	             ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                return getCleanerInSql(rs);
+	            }
+	        }catch (SQLException e) {
+	            e.printStackTrace();
+	            return null;
+	        }
+	   return null;
 	}
 
 	@Override
@@ -80,5 +90,14 @@ public class CleanerDAOImpl extends BaseDAOImpl implements CleanerDAO{
 		}
 		return cleaner;
 	}
+	
+	private Cleaner getCleanerInSql(ResultSet rs) throws SQLException{
+		Cleaner cleaner = new Cleaner();
+		cleaner.setId(rs.getInt(1));
+		cleaner.setName(rs.getString(2));
+		cleaner.setPhone(rs.getString(3));
+		cleaner.setCompany(rs.getString(4));
+        return cleaner;
+    }
 
 }

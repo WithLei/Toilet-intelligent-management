@@ -23,7 +23,7 @@ public class Position {
 	/**
 	 * 开始使用时间
 	 */
-	private Date start_time;
+	private String start_time;
 	/**
 	 * 蹲位类型
 	 * seat 坐便
@@ -52,7 +52,7 @@ public class Position {
 	}
 
 	
-	public Position(int id, boolean isUsing, boolean isServing, Date start_time, String type, Toilet toilet) {
+	public Position(int id, boolean isUsing, boolean isServing, String start_time, String type, Toilet toilet) {
 		super();
 		this.id = id;
 		this.isUsing = isUsing;
@@ -86,11 +86,11 @@ public class Position {
 		this.isServing = isServing;
 	}
 
-	public Date getStart_time() {
+	public String getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(Date start_time) {
+	public void setStart_time(String start_time) {
 		this.start_time = start_time;
 	}
 

@@ -87,6 +87,12 @@ public class ToiletDAOImpl extends BaseDAOImpl implements ToiletDAO{
     	Toilet toilet = new Toilet();
     	toilet.setId(rs.getInt(1));
     	toilet.setName(rs.getString(2));
+    	toilet.setType(rs.getInt(3));
+    	CleanerDAOImpl cleanerDAOImpl = new CleanerDAOImpl();
+    	toilet.setCleaner(cleanerDAOImpl.getById(rs.getInt(4)));
+    	toilet.setLast_cleaned_time(rs.getDate(5));
+    	toilet.setNext_clean_time(rs.getDate(6));
+    	toilet.setService(rs.getBoolean(7));
         return toilet;
     }
 
@@ -94,6 +100,11 @@ public class ToiletDAOImpl extends BaseDAOImpl implements ToiletDAO{
 		
 		// 不做
 		return null;
+	}
+	
+	public List<Toilet> getToiletByFloor(int id) {
+		String sql = "select * from toilet where floorid=" + id;
+		return getToiletList(sql);
 	}
 
 	@Override

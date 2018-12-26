@@ -25,7 +25,7 @@ import cn.javaee.servlet.BaseHttpServlet;
 /**
  * Servlet implementation class common
  */
-@WebServlet("/savePosition")
+@WebServlet({"/savePosition","/getPositionByToilet","/getPosition"})
 public class CommonServlet extends BaseHttpServlet {
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -35,10 +35,34 @@ public class CommonServlet extends BaseHttpServlet {
 			Toilet toilet = new Toilet();
 			toilet.setId(3);
 			
-			Position position = new Position(100,true,false,new java.sql.Date(System.currentTimeMillis()),
+			Position position = new Position(100,true,false,null,
 					PositionTypeEnum.POSITION_SQUAT.getName(),toilet);
 			PositionDAOImpl positionDAOImpl = new PositionDAOImpl();
 			positionDAOImpl.save(position);
+		}
+		
+		if(uri.endsWith("getPositionByToilet")) {
+			int id = Integer.valueOf(request.getParameter("id"));
+			PositionDAOImpl positionDAOImpl = new PositionDAOImpl();
+			List<Position>positions = positionDAOImpl.getPositionByToilet(id);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(positions);
+			PrintWriter out = new PrintWriter(response.getOutputStream());
+			out.print(json);
+			out.flush();
+		}
+		
+		if(uri.endsWith("getPosition")) {
+			int id = Integer.valueOf(request.getParameter("id"));
+			PositionDAOImpl positionDAOImpl = new PositionDAOImpl();
+			Position position = positionDAOImpl.getById(id);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(position);
+			PrintWriter out = new PrintWriter(response.getOutputStream());
+			out.print(json);
+			out.flush();
 		}
 	}
 }

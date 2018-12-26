@@ -1,5 +1,6 @@
 package cn.javaee.servlet.toilet;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,8 +17,10 @@ import cn.javaee.dao.daoimpl.ToiletDAOImpl;
 import cn.javaee.servlet.BaseHttpServlet;
 
 
-@WebServlet({"/getAllToilet","/getToiletById","/saveToilet"})
+@WebServlet({"/getAllToilet","/getToiletById","/saveToilet","/getToiletByFloor"})
 public class CommonServlet extends BaseHttpServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +29,7 @@ public class CommonServlet extends BaseHttpServlet {
 		if (uri.endsWith("getAllToilet")) {
 			ToiletDAOImpl toiletDAOImpl = new ToiletDAOImpl();
 			List<Toilet>toilets = toiletDAOImpl.getAll();
+			System.out.println("getAllToilet");
 			
 			Gson gson = new Gson();
 			String json = gson.toJson(toilets);
@@ -56,6 +60,18 @@ public class CommonServlet extends BaseHttpServlet {
 			out.print(json);
 			out.flush();
 		}
+        
+        if (uri.endsWith("getToiletByFloor")) {
+        	int id = Integer.valueOf(request.getParameter("id"));
+        	ToiletDAOImpl toiletDAOImpl = new ToiletDAOImpl();
+        	List<Toilet>toilets = toiletDAOImpl.getToiletByFloor(id);
+        	
+        	Gson gson = new Gson();
+			String json = gson.toJson(toilets);
+			PrintWriter out = new PrintWriter(response.getOutputStream());
+			out.print(json);
+			out.flush();
+        }
 
 	}
 }

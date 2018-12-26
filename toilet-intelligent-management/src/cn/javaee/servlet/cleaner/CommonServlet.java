@@ -19,7 +19,7 @@ import cn.javaee.dao.daoimpl.FloorDAOImpl;
 import cn.javaee.servlet.BaseHttpServlet;
 
 @WebServlet({"/getAllCleaner","/getCleaner","/setCleaner"})
-public class common extends BaseHttpServlet {
+public class CommonServlet extends BaseHttpServlet {
 	@Override
 	public void doMyGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -30,6 +30,21 @@ public class common extends BaseHttpServlet {
 			List<Cleaner>cleaners = cleanerDAOImpl.getAll();
 			Gson gson = new Gson();
 			String json = gson.toJson(cleaners);
+			System.out.println("getAllCleaner");
+
+			PrintWriter out = new PrintWriter(response.getOutputStream());
+			out.print(json);
+			out.flush();
+		}
+		
+		if (uri.endsWith("getCleaner")) {
+			System.out.println("getCleaner");
+			int id = Integer.valueOf(request.getParameter("id"));
+			CleanerDAOImpl cleanerDAOImpl = new CleanerDAOImpl();
+			Cleaner cleaner = cleanerDAOImpl.getById(id);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(cleaner);
 
 			PrintWriter out = new PrintWriter(response.getOutputStream());
 			out.print(json);

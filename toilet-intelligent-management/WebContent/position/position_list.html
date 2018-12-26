@@ -28,8 +28,7 @@
       </xblock>
  
 <script type="text/html" id="barDemo">
-  <button class="layui-btn layui-btn-xs" lay-event="add">添加坑位</button>
-  <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+  <button class="layui-btn layui-btn-xs" lay-event="change">更改状态</button>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
@@ -83,7 +82,7 @@ layui.use('table', function(){
 	    if(obj.event=="del"){
 		    layer.confirm('确认要删除吗？',function(index){
 		    	$.ajax({
-		               url: '/toilet-intelligent-management/deleteToilet',
+		               url: '/toilet-intelligent-management/deletePosition',
 		               type: 'post',
 		               data: {
 		                   'id': data.id
@@ -99,39 +98,25 @@ layui.use('table', function(){
 		               }
 		           })
 	        });	
-	    }else if(obj.event=="edit"){
-	    	x_admin_show('编辑厕所','./toilet_edit.html?id='+data.id,600,400);
 	    }else{
-	    	x_admin_show('坑位列表','../position_list.html?id='+data.id,1000,400);
+	    	$.ajax({
+	               url: '/toilet-intelligent-management/updatePositionService',
+	               type: 'post',
+	               data: {
+	                   'id': data.id
+	               },
+	               success: function (info) {
+	            	   var data = JSON.parse(info);
+	                   if (data.code == 1) {
+	                	   layer.msg("发生错误");
+	                   } else {
+	                       layer.msg(data.msg);
+	                   }
+	               }
+	           })
 	    }
 	});
 });
-
-	function query(){
-		var name = document.getElementById("name");
-		var phone = document.getElementById("phone");
-		layui.use('table', function(){
-			  var table = layui.table;
-			  
-			  table.render({
-			    elem: '#test'
-			    ,url:'/toilet-intelligent-management/getAllToilets?name=' + name.value + "&phone=" + phone.value
-			    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-			    ,cols: [[
-			      {field:'id', title: '编号'}
-			      ,{field:'name',title: '厕所名'}
-			      ,{field:'type', title: '类型'}
-			      ,{field:'cleaner_name',title:'清洁员名称'}
-			      ,{field:'cleaner_phone',title:'清洁员电话'}
-			      ,{field:'cleaner_phone',title:'上次清洁时间'}
-			      ,{field:'cleaner_phone',title:'下次清洁时间'}
-			      ,{field:'cleaner_phone',title:'是否开放'}
-			      ,{field:'cleaner_phone',title:'楼层名'}
-			      ,{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}
-			    ]]
-			  });
-			});
-	}
 	
     </script>
   </body>

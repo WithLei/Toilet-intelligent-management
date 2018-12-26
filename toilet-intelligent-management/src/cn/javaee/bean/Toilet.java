@@ -31,11 +31,11 @@ public class Toilet {
 	 * 上一次打扫时间
 	 * 存数据库中使用time字段
 	 */
-	private Date last_cleaned_time;
+	private String last_cleaned_time;
 	/**
 	 * 下一次打扫时间
 	 */
-	private Date next_clean_time;
+	private String next_clean_time;
 	/**
 	 * 该厕所蹲位表
 	 */
@@ -85,19 +85,19 @@ public class Toilet {
 		this.cleaner = cleaner;
 	}
 
-	public Date getLast_cleaned_time() {
+	public String getLast_cleaned_time() {
 		return last_cleaned_time;
 	}
 
-	public void setLast_cleaned_time(Date last_cleaned_time) {
+	public void setLast_cleaned_time(String last_cleaned_time) {
 		this.last_cleaned_time = last_cleaned_time;
 	}
 
-	public Date getNext_clean_time() {
+	public String getNext_clean_time() {
 		return next_clean_time;
 	}
 
-	public void setNext_clean_time(Date next_clean_time) {
+	public void setNext_clean_time(String next_clean_time) {
 		this.next_clean_time = next_clean_time;
 	}
 

@@ -47,7 +47,7 @@ public class PositionDAOImpl extends BaseDAOImpl implements PositionDAO{
 				PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setBoolean(1, entity.isUsing());
 			ps.setBoolean(2, entity.isServing());
-			ps.setDate(3, entity.getStart_time());
+			ps.setString(3, entity.getStart_time());
 			ps.setString(4, entity.getType());
 			ps.setInt(5, entity.getToilet().getId());
 			ps.setInt(6, entity.getId());
@@ -81,11 +81,8 @@ public class PositionDAOImpl extends BaseDAOImpl implements PositionDAO{
 			position.setId(rs.getInt("id"));
 			position.setUsing(rs.getBoolean("isUsing"));
 			position.setServing(rs.getBoolean("isServing"));
-			position.setStart_time(rs.getDate("start_time"));
+			position.setStart_time(rs.getString("start_time"));
 			position.setType(rs.getString("type"));
-			/**
-			 * 后期改，Toilet对象不完整
-			 */
 			ToiletDAOImpl toilet = new ToiletDAOImpl();
 			position.setToilet(toilet.getById(rs.getInt("toiletid")));
 			return position;

@@ -52,8 +52,8 @@ public class ToiletDAOImpl extends BaseDAOImpl implements ToiletDAO{
 		    ps.setString(1, entity.getName());
 			ps.setInt(2, entity.getType());
 			ps.setInt(3, entity.getCleaner().getId());
-			ps.setDate(4, (Date) entity.getLast_cleaned_time());
-			ps.setDate(5,(Date) entity.getNext_clean_time());
+			ps.setString(4,  entity.getLast_cleaned_time());
+			ps.setString(5,entity.getNext_clean_time());
 			ps.setBoolean(6, entity.isService());
 			ps.setInt(7, entity.getFloor().getId()); 
 			ps.setInt(8, entity.getId()); 
@@ -92,8 +92,8 @@ public class ToiletDAOImpl extends BaseDAOImpl implements ToiletDAO{
     	toilet.setType(rs.getInt(3));
     	CleanerDAOImpl cleanerDAOImpl = new CleanerDAOImpl();
     	toilet.setCleaner(cleanerDAOImpl.getById(rs.getInt(4)));
-    	toilet.setLast_cleaned_time(rs.getDate(5));
-    	toilet.setNext_clean_time(rs.getDate(6));
+    	toilet.setLast_cleaned_time(rs.getString(5));
+    	toilet.setNext_clean_time(rs.getString(6));
     	toilet.setService(rs.getBoolean(7));
     	FloorDAOImpl floorDAOImpl = new FloorDAOImpl();
     	toilet.setFloor(floorDAOImpl.getById(rs.getInt(8)));

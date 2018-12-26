@@ -8,8 +8,8 @@ public class ResultToiletVO {
 	private String type;
 	private String cleaner_name;
 	private String cleaner_phone;
-	private Date pre_clean;
-	private Date next_clean;
+	private String pre_clean;
+	private String next_clean;
 	private String isServer;
 	private String floor_name;
 	public Integer getId() {
@@ -42,16 +42,16 @@ public class ResultToiletVO {
 	public void setCleaner_phone(String cleaner_phone) {
 		this.cleaner_phone = cleaner_phone;
 	}
-	public Date getPre_clean() {
+	public String getPre_clean() {
 		return pre_clean;
 	}
-	public void setPre_clean(Date pre_clean) {
+	public void setPre_clean(String pre_clean) {
 		this.pre_clean = pre_clean;
 	}
-	public Date getNext_clean() {
+	public String getNext_clean() {
 		return next_clean;
 	}
-	public void setNext_clean(Date next_clean) {
+	public void setNext_clean(String next_clean) {
 		this.next_clean = next_clean;
 	}
 	public String getIsServer() {

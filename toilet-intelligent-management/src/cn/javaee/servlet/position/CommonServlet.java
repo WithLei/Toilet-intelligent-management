@@ -3,6 +3,7 @@ package cn.javaee.servlet.position;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import cn.javaee.bean.Floor;
 import cn.javaee.bean.Position;
@@ -35,7 +37,9 @@ public class CommonServlet extends BaseHttpServlet {
 			Toilet toilet = new Toilet();
 			toilet.setId(3);
 			
-			Position position = new Position(100,true,false,new java.sql.Date(System.currentTimeMillis()),
+			SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			Position position = new Position(100,true,false,dFormat.format(new Date()),
 					PositionTypeEnum.POSITION_SQUAT.getName(),toilet);
 			PositionDAOImpl positionDAOImpl = new PositionDAOImpl();
 			positionDAOImpl.save(position);

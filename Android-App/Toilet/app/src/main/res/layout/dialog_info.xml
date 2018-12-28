@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="厕所"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/toilet"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="办公室厕所"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="使用状态"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/isusing"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="未使用"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/startTimeView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="开始使用时间"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/using_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="2018-12-26 8:48"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="服务状态"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/isService"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="正常服务"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="上一次清扫时间"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/last_cleaned_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="2018-12-26 8:48"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="下一次清扫时间"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/next_clean_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="2018-12-26 8:48"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="保洁员"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cleaner"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            tools:text="喜羊羊"
+            android:textSize="16sp"
+            android:padding="5dp" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/text_color_sec"
+        android:textSize="16sp"
+        android:text="@string/notice"
+        android:layout_gravity="center"/>
+</LinearLayout>

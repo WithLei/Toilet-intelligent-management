@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>智能厕位管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/xadmin.js"></script>
+   
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form">
+        <input id="id" type="hidden" >
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                 	厕所名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+          	<label class="layui-form-label">
+                 	类型
+            </label>
+            <div class="layui-input-inline">
+                <select name="type" id="type">
+          			<option value="0">女厕</option>
+          			<option value="1">男厕</option>
+          			<option value="2">公共厕所</option>
+          			<option value="3">残疾人厕所</option>
+          			<option value="4">其他</option>
+       			</select>
+            </div>
+       	  </div>
+       	  
+       	  <div class="layui-form-item">
+          	<label class="layui-form-label">
+                 	清洁员
+            </label>
+            <div class="layui-input-inline">
+                <select name="cleaner" id="cleaner">
+          		
+       			</select>
+            </div>
+       	  </div>
+       	  
+       	  <div class="layui-form-item">
+          	<label class="layui-form-label">
+                 	楼层
+            </label>
+            <div class="layui-input-inline">
+                <select name="floor" id="floor">
+          		
+       			</select>
+            </div>
+       	  </div>
+       	  
+       	  <div class="layui-form-item">
+		    <label class="layui-form-label">是否开放</label>
+		    <div class="layui-input-block">
+		      <input id="service" type="checkbox" name="service" lay-skin="switch" lay-text="ON|OFF">
+		    </div>
+  		</div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <button  class="layui-btn" type="button" onclick="update()">
+                 	 修改
+              </button>
+          </div>
+      </form>
+    </div>
+ <script>
+ 
+ function getQueryString(name) { 
+     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+     var r = window.location.search.substr(1).match(reg); 
+     if (r != null) return unescape(r[2]); 
+     return null; 
+ } 
+ 
+ $.ajax({
+     url: '/toilet-intelligent-management/getAllCleaner',
+     type: 'get',
+     success: function (info) {
+  	   var data = JSON.parse(info);
+  	   var clean = document.getElementById("cleaner");
+        for(i in data){
+     	   clean.options.add(new Option(data[i].name,data[i].id));
+        }
+     }
+ });
+ 
+ $.ajax({
+     url: '/toilet-intelligent-management/getAllFloor',
+     type: 'get',
+     success: function (info) {
+  	   var data = JSON.parse(info);
+  	   var clean = document.getElementById("floor");
+        for(i in data){
+     	   clean.options.add(new Option(data[i].name,data[i].id));
+        }
+     }
+ }); 
+ 
+	$.ajax({
+        url: '/toilet-intelligent-management/getToiletById',
+        type: 'post',
+        data: {
+            'id': getQueryString("id")
+        },
+        success: function (info) {
+     	   var data = JSON.parse(info);
+     	   
+     	   var id = document.getElementById("id");
+     	   id.value = data.id;
+          
+           var name = document.getElementById("name");
+           name.value = data.name;
+           
+         	var type = document.getElementById("type");
+         	for(var i in type.options){
+         		if(type[i].value == data.type){
+         			type[i].selected  = true;
+         			break;
+         		}
+         	}
+         	
+         	var cleaner = document.getElementById("cleaner");
+         	for(var i in cleaner.options){
+         		if(cleaner[i].value == data.cleaner.id){
+         			cleaner[i].selected  = true;
+         			break;
+         		}
+         	}
+         	
+         	var floor = document.getElementById("floor");
+         	for(var i in floor.options){
+         		if(floor[i].value == data.floor.id){
+         			floor[i].selected  = true;
+         			break;
+         		}
+         	}
+         	
+         	var service = document.getElementById("service");
+         	console.log(data.isService);
+         	if(data.isService==true){
+         		service.checked = true;
+         	}
+        }
+    });
+	
+	function update(){
+		var id = document.getElementById("id");   
+        
+        var name = document.getElementById("name");
+ 	   var type = document.getElementById("type");
+ 	   var index = type.selectedIndex;
+ 	   var p_type = type.options[index].value;
+ 	   
+ 	   var cleaner = document.getElementById("cleaner");
+ 	   var index = cleaner.selectedIndex;
+ 	   var p_cleaner = cleaner.options[index].value;
+ 	   
+ 	   var floor = document.getElementById("floor");
+ 	   var index = floor.selectedIndex;
+ 	   var p_floor = floor.options[index].value;
+ 	   
+ 	   var service = document.getElementById("service");
+ 	   if(service==true){
+ 		   service = 1;
+ 	   }else{
+ 		   service = 0;
+ 	   }
+        
+        $.ajax({
+            url: '/toilet-intelligent-management/updateToile',
+            type: 'post',
+            data: {
+                'id':id.value,
+                'name': name.value,
+                'type':p_type,
+                'cleaner':p_cleaner,
+                'floor':p_floor,
+                'service':service.checked
+            },
+            success: function (info) {
+            	 var data = JSON.parse(info);
+                 if (data.code == 1) {
+              	   layer.msg("发生错误");
+                 } else {
+                     layer.msg(data.msg);
+                 }
+            }
+        });
+	}
+ </script>
+  </body>
+
+</html>
